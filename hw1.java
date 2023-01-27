@@ -5,19 +5,22 @@ import java.util.concurrent.*;
 
 public class hw1 {
     public static void main(String[] args) {
-        // set max number of threads to 8
-        ExecutorService exService = Executors.newFixedThreadPool(8);
+        ExecutorService exService;
         long primeSum = 0;
         long primeCount = 0;
         long startTime;
         long endTime;
         int maxNum = (int) Math.pow(10, 8);
-        // maxNum + 1 to be able to index array with maxNum: sieve[maxNum]
-        boolean[] sieve = new boolean[maxNum + 1];
+        boolean[] sieve;
         int[] maxPrimes = new int[10];
 
         // START
         startTime = System.currentTimeMillis();
+
+        // set max number of threads to 8
+        exService = Executors.newFixedThreadPool(8);
+        // maxNum + 1 to be able to index array with maxNum: sieve[maxNum]
+        sieve = new boolean[maxNum + 1];
 
         // find primes using sieve of eratosthenes
         for (int i = 2; i <= Math.sqrt(maxNum); i++)
